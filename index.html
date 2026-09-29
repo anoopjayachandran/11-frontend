@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .image-row img {
+            width: 100%;
+            height: 300px;
+        }
+        #dynamic-image2:hover {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-row">
+    <img 
+        id="static-image"
+        width="400"
+        src="https://upload.wikimedia.org/wikipedia/commons/a/ab/ICT_Academy_Kerala.webp?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" 
+        alt="Static sample image" />
+
+    <img 
+        id="dynamic-image" 
+        src="https://picsum.photos/400/300" 
+        alt="Random placeholder image"
+        width="400"
+    >   
+
+    <img 
+        id="dynamic-image2" 
+        src="https://picsum.photos/400/300" 
+        alt="Random placeholder image"
+        width="400"
+    >   
+    </div>
+</body>
+<script>
+        
+        const ictImage = "https://upload.wikimedia.org/wikipedia/commons/a/ab/ICT_Academy_Kerala.webp?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled";
+        const staticimg = document.getElementById("static-image");
+        const dynamicimg = document.getElementById("dynamic-image");
+
+        // mouseover event listener for the static image
+        staticimg.addEventListener("mouseover", function() {
+            staticimg.src = "";
+        });
+
+        dynamicimg.addEventListener("mouseover", function() {
+            dynamicimg.style.opacity = "0"; 
+        });
+
+        // Reappear when the mouse leaves the area
+        dynamicimg.addEventListener("mouseout", function() {
+            dynamicimg.style.opacity = "1";
+        });
+
+        staticimg.addEventListener("mouseout", function() {
+            staticimg.src = ictImage;
+        });
+    </script>
+</html>
